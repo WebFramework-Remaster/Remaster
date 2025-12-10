@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Program.css";
 import programs from "../../data/program";
-import Sidebar from "../../components/side/Sidebar";
 import ProgramImageModal from "../../components/program/ProgramImageModal";
 import LoginAlertModal from "../../components/common/LoginAlert/LoginAlertModal";
 import DuplicateModal from "../../components/common/DuplicateModal/DuplicateModal";
@@ -13,9 +12,6 @@ import DuplicateModal from "../../components/common/DuplicateModal/DuplicateModa
 function Program({ currentUser }) {
   const location = useLocation();
   const navigate = useNavigate();
-
-  // 사이드바 상태
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // 선택된 프로그램 상태 관리
   const programInfo = location.state?.program;
@@ -87,11 +83,6 @@ function Program({ currentUser }) {
 
   return (
     <div className="App">
-      {/* currentUser가 유효한 객체일 때 Sidebar 표시 */}
-      {currentUser && Object.keys(currentUser).length > 0 && (
-          <Sidebar currentUser={currentUser} />
-      )}
-
       {selectedProgram && (
         <>
           <div className="program-info">
